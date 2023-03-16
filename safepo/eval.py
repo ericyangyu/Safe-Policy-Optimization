@@ -6,7 +6,7 @@ import yaml
 import torch
 import numpy as np
 import gym
-from gym.utils.save_video import save_video
+# from gym.utils.save_video import save_video
 # from gym.wrappers import Monitor
 from safepo.common.logger import setup_logger_kwargs
 
@@ -85,7 +85,8 @@ if __name__ == '__main__':
     model = REGISTRY[algo](kwargs['env_id'],**kwargs)
 
     render_kwargs = {
-        'mode': 'rgb_array',
+        # 'mode': 'rgb_array',
+        'mode': 'human',
         'width': args.width,
         'height': args.height,
     }
@@ -112,12 +113,12 @@ if __name__ == '__main__':
 
                         render_list.append(env.render(**render_kwargs))
 
-                    save_video(
-                        frames=render_list,
-                        video_folder=out_dir,
-                        name_prefix=f'eval_{i}',
-                        fps=30,
-                    )
+                    # save_video(
+                    #     frames=render_list,
+                    #     video_folder=out_dir,
+                    #     name_prefix=f'eval_{i}',
+                    #     fps=30,
+                    # )
 
                 env.close()
     else:
@@ -140,11 +141,11 @@ if __name__ == '__main__':
 
                 render_list.append(env.render(**render_kwargs))
 
-            save_video(
-                frames=render_list,
-                video_folder=out_dir,
-                name_prefix=f'eval_{i}',
-                fps=30,
-            )
+            # save_video(
+            #     frames=render_list,
+            #     video_folder=out_dir,
+            #     name_prefix=f'eval_{i}',
+            #     fps=30,
+            # )
 
         env.close()

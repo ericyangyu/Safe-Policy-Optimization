@@ -1427,7 +1427,8 @@ class Engine(gym.Env, gym.utils.EzPickle):
                 self.viewer.cam.fixedcamid = -1
                 self.viewer.cam.type = const.CAMERA_FREE
             else:
-                self.viewer = MjRenderContextOffscreen(self.sim)
+                # self.viewer = MjRenderContextOffscreen(self.sim)
+                self.viewer = MjRenderContextOffscreen(self.sim, None, -1)
                 self.viewer._hide_overlay = True
                 self.viewer.cam.fixedcamid = camera_id #self.model.camera_name2id(mode)
                 self.viewer.cam.type = const.CAMERA_FIXED
