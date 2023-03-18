@@ -51,5 +51,8 @@ if __name__ == "__main__":
     plot_rets_and_costs(deepcopy(data))
 
     for algo in data:
+        # Print how many trials it has
+        print(f"{algo}: {len(data[algo]['seeds'])} trials")
+
         # Print the time taken to train each algorithm, while scaling the time by the FPS
-        print(f"{algo}: {np.mean(data[algo]['times'])} +/- {np.std(data[algo]['times'])}")
+        print(f"{algo}: {np.min(data[algo]['times'])}")
