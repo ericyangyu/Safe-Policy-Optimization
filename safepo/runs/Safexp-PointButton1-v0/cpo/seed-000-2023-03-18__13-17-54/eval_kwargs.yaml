@@ -11,8 +11,8 @@ ac_kwargs:
     - 64
 actor: mlp
 adv_estimation_method: gae
-algo: p3o
-env_id: Safexp-PointGoal1-v0
+algo: cpo
+env_id: Safexp-PointButton1-v0
 epochs: 500
 gamma: 0.99
 seed: 0

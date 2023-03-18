@@ -128,6 +128,8 @@ if __name__ == '__main__':
         out_dir = os.path.join(default_log_dir, args.model_name)
         env.seed(seed=seed)
 
+        import pdb; pdb.set_trace()
+
         for i in range(args.eval_ep):
             render_list = []
             o = env.reset()

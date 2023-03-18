@@ -1,7 +1,7 @@
 import sys;
 from copy import deepcopy
 
-from safepo.graphing.plot_rets import plot_rets_and_costs
+from safepo.graphing.plot_rets_and_costs import plot_rets_and_costs
 
 sys.path.append('..')
 import os
