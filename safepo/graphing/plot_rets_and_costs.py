@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 
 
-def plot_rets_and_costs(data):
+def plot_rets_and_costs(data, name, filename, cost):
     """
     Plot the average (with variance) returns and costs of all data
     """
@@ -22,14 +22,18 @@ def plot_rets_and_costs(data):
         ax[1].plot(data[algo]["epochs"], data[algo]["costs"].mean(axis=0), label=algo, linewidth=2)
         ax[1].fill_between(data[algo]["epochs"], data[algo]["costs"].mean(axis=0) - data[algo]["costs"].std(axis=0),
                            data[algo]["costs"].mean(axis=0) + data[algo]["costs"].std(axis=0), alpha=0.3)
-    ax[0].set_title("Point Goal Env Returns")
+
+    # Add a dotted line for the cost threshold
+    ax[1].axhline(y=cost, color='r', linestyle='--')
+
+    ax[0].set_title(f"{name} Returns")
     ax[0].set_xlabel("Epoch")
     ax[0].set_ylabel("Average Return")
-    ax[1].set_title("Point Goal Env Costs")
+    ax[1].set_title(f"{name} Costs")
     ax[1].set_xlabel("Epoch")
     ax[1].set_ylabel("Average Cost")
     ax[-1].legend()
-    plt.savefig("./graphing/images/point_goal_env.png")
+    plt.savefig(f"./graphing/images/{filename}.png")
     plt.close()
 
 

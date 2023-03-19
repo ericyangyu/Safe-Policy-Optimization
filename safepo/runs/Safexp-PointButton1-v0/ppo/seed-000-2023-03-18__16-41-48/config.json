@@ -30,7 +30,7 @@
     "logger_kwargs":	{
         "exp_name":	"Safexp-PointButton1-v0/ppo",
         "level":	1,
-        "log_dir":	"./runs/Safexp-PointButton1-v0/ppo/seed-000-2023-03-17__19-01-09",
+        "log_dir":	"./runs/Safexp-PointButton1-v0/ppo/seed-000-2023-03-18__16-41-48",
         "use_tensor_board":	true,
         "verbose":	true
     },

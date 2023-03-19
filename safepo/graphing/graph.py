@@ -34,8 +34,13 @@ def extract_data(path):
             "costs": None,
         }
         for seed in os.listdir(os.path.join(path, algo)):
-            data[algo]["seeds"].append(seed)
             df = pd.read_csv(os.path.join(path, algo, seed, 'progress.txt'), sep='\s+')
+            # If training is still happening, make a note and ignore
+            if df['Epoch'].values.shape[0] != 500:
+                print('Incomplete data, skipping. Algo: {}, Seed: {}'.format(algo, seed))
+                continue
+
+            data[algo]["seeds"].append(seed)
             data[algo]["times"].append(df["Time"].values[-1])
             if data[algo]["epochs"] is None:
                 data[algo]["epochs"] = df["Epoch"].values
@@ -46,13 +51,17 @@ def extract_data(path):
     return data
 
 if __name__ == "__main__":
-    data = extract_data("./runs/Safexp-PointGoal1-V0/")
+    for name, filename, cost, exp in [('Point Goal Env', 'point_goal_env', 25, 'Safexp-PointGoal1-V0/'), ('Point Button Env', 'point_button_env', 25, 'Safexp-PointButton1-V0/')]:
+        print('Experiment: ', exp)
+        data = extract_data(f"./runs/{exp}")
 
-    plot_rets_and_costs(deepcopy(data))
+        plot_rets_and_costs(deepcopy(data), name, filename, cost)
 
-    for algo in data:
-        # Print how many trials it has
-        print(f"{algo}: {len(data[algo]['seeds'])} trials")
+        for algo in data:
+            # Print how many trials it has
+            print(f"{algo}: {len(data[algo]['seeds'])} trials")
 
-        # Print the time taken to train each algorithm, while scaling the time by the FPS
-        print(f"{algo}: {np.min(data[algo]['times'])}")
+            # Print the minimum time in hours taken to train each algorithm, rounded to 3 decimal places
+            print(f"{algo}: {np.min(data[algo]['times']) / 3600:.3f} hours")
+
+        print()

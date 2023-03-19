@@ -182,6 +182,7 @@ class CPO(TRPO):
         self.logger.log(f'c = {c}')
         self.logger.log(f'b^T b = {b_flat.dot(b_flat).item()}')
 
+
         # Set variable names as used in the paper with conjugate_gradient method, 
         # used to solve equation(compute Hassen Matrix) instead of Natural Gradient
         p = conjugate_gradients(self.Fvp, b_flat, self.cg_iters)
