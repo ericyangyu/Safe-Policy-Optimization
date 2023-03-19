@@ -1,0 +1,63 @@
+{
+    "ac_kwargs":	{
+        "pi":	{
+            "activation":	"tanh",
+            "hidden_sizes":	[
+                64,
+                64
+            ]
+        },
+        "val":	{
+            "activation":	"tanh",
+            "hidden_sizes":	[
+                64,
+                64
+            ]
+        }
+    },
+    "actor":	"mlp",
+    "adv_estimation_method":	"gae",
+    "algo":	"pcpo",
+    "check_freq":	25,
+    "enable_eval":	false,
+    "entropy_coef":	0.01,
+    "env_id":	"Safexp-PointButton1-v0",
+    "epochs":	500,
+    "exp_name":	"Safexp-PointButton1-v0/pcpo",
+    "gamma":	0.99,
+    "lam":	0.95,
+    "lam_c":	0.95,
+    "logger_kwargs":	{
+        "exp_name":	"Safexp-PointButton1-v0/pcpo",
+        "level":	1,
+        "log_dir":	"./runs/Safexp-PointButton1-v0/pcpo/seed-000-2023-03-18__19-03-33",
+        "use_tensor_board":	true,
+        "verbose":	true
+    },
+    "max_ep_len":	1000,
+    "max_grad_norm":	0.5,
+    "num_mini_batches":	16,
+    "optimizer":	"Adam",
+    "pi_lr":	0.0003,
+    "save_freq":	10,
+    "seed":	0,
+    "steps_per_epoch":	30000,
+    "target_kl":	0.01,
+    "train_pi_iterations":	80,
+    "train_v_iterations":	40,
+    "use_cost_value_function":	true,
+    "use_discount_cost_update_lag":	false,
+    "use_entropy":	false,
+    "use_exploration_noise_anneal":	true,
+    "use_kl_early_stopping":	true,
+    "use_linear_lr_decay":	true,
+    "use_max_grad_norm":	false,
+    "use_reward_penalty":	false,
+    "use_reward_scaling":	false,
+    "use_shared_weights":	false,
+    "use_standardized_cost":	true,
+    "use_standardized_obs":	false,
+    "use_standardized_reward":	true,
+    "vf_lr":	0.001,
+    "weight_initialization":	"kaiming_uniform"
+}
