@@ -55,7 +55,6 @@ if __name__ == "__main__":
         print('Experiment: ', exp)
         data = extract_data(f"./runs/{exp}")
 
-        import pdb; pdb.set_trace()
         plot_rets_and_costs(deepcopy(data), name, filename, cost)
 
         for algo in data:
